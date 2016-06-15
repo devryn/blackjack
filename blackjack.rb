@@ -7,46 +7,53 @@ def prompt
     puts "Sorry to hear that. Come back when you want to play!"
   else
     puts "Kate's Jacked Game of Blackjack doesn't understand. Please enter yes or no."
+  end
+end
 
-  class Cards
-    attr_reader :suits, :rank
-    def initialize(suit,rank)
-      @suit = suit
-      @rank = rank
-    end
+class Cards
+  attr_reader :suits, :rank
+  def initialize(suit,rank)
+    @suit = suit
+    @rank = rank
   end
 
   def play_game
     puts "Draw two cards."
-
-  class Deck
-    def initialize
-      @cards = []
+    current_hand = @cards.map do |card|
+      card.draw
     end
-    def make_deck
-      suits = [:hearts, :diamonds, :spades, :clubs]
-      suits.each do |suit|
-        (2..14).each do |rank|
-          @cards << Cards.new(suit, rank)
-        end
-        def shuffle
-          @cards.shuffle!
-        end
+  end
+end
+
+class Deck
+  def initialize
+    @cards = []
+  end
+  def make_deck
+    suits = [:hearts, :diamonds, :spades, :clubs]
+    suits.each do |suit|
+      (2..14).each do |rank|
+        @cards << Cards.new(suit, rank)
+      end
+      def shuffle
+        @cards.shuffle!
       end
     end
   end
+end
 
 
-  class Hand
-    def initialize(num_of_cards = 2)
-      @deck = []
-  end
+class Hand
+  def attr_accessor
+
+end
 
 
-  class Player
-    attr_reader :score, :name
-  end
+class Player
+  attr_reader :score, :name
+end
 
 
   class Dealer
-    end
+  end
+end
