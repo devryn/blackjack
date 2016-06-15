@@ -1,12 +1,17 @@
-def prompt
+
   puts "Welcome to Kate's Jacked Game of Blackjack! Would you like to play?"
   play = gets.chomp.downcase
+
+  def play_game
+  puts "Draw two cards."
+
   if play == yes
     play_game
-  exit if play == no
+  if play == no
     puts "Sorry to hear that. Come back when you want to play!"
   else
     puts "Kate's Jacked Game of Blackjack doesn't understand. Please enter yes or no."
+  end
   end
 end
 
@@ -15,13 +20,6 @@ class Cards
   def initialize(suit,rank)
     @suit = suit
     @rank = rank
-  end
-
-  def play_game
-    puts "Draw two cards."
-    current_hand = @cards.map do |card|
-      card.draw
-    end
   end
 end
 
