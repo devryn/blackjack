@@ -1,10 +1,10 @@
 
 
 class Cards
-  attr_reader :suit, :rank
-  def initialize(suit,rank)
+  attr_reader :suit, :value
+  def initialize(suit,value)
     @suit = suit
-    @rank = rank
+    @value = value
   end
 #to_s here?
 end
@@ -16,8 +16,8 @@ class Deck
   def make_deck
     suits = [:hearts, :diamonds, :spades, :clubs]
     suits.each do |suit|
-      (2..14).each do |rank|
-        @cards.push(Cards.new(suit, rank))
+      (2..14).each do |value|
+        @cards.push(Cards.new(suit, value))
       end
     end
   end
@@ -37,14 +37,6 @@ class Hand
     deck.shuffle
   end
 end
-#     puts "Welcome to the game of War."
-#     print ">"
-#     response = gets.chomp.downcase
-#     exit if response == 'q'
-#   end
-# end
-
-
 
 
 class Player
@@ -73,15 +65,24 @@ def run
   player_card.push deck.draw
   computer_card.push deck.draw
 
-puts player_card.to_s
-puts computer_card.to_s
+  player_card.each do |card|
+    puts "#{card.suit} - #{card.value}"
+  end
 
 puts "Would you like to hit or stay?"
 response = gets.chomp.downcase
+if response == "hit"
+  player_card = deck.draw
+end
   #print
   #gets.chomp
   #hit or stay?
 
+  if computer_card <= 17 then deck.draw
+  end
+  if computer_card > 17
+    puts "Computer stays."
+  end
   #if >17, if < 17
 end
 
