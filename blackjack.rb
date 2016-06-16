@@ -69,22 +69,41 @@ def run
     puts "#{card.suit} - #{card.value}"
   end
 
+
+
 puts "Would you like to hit or stay?"
 response = gets.chomp.downcase
-if response == "hit"
-  player_card = deck.draw
+  if response == "hit"
+    player_card.push deck.draw
+    player_card.each do |card|
+    puts "#{card.value} - #{card.suit}"
+  end
+  puts "Would you like to hit or stay?"
+  response = gets.chomp.downcase
+    if response == "hit"
+    player_card.push deck.draw
+    player_card.each do |card|
+    puts "#{card.value} - #{card.suit}"
+    end
+  end
+    elsif response == "stay"
+      player_card.each do |card|
+      puts "Your hand is #{card.value} of #{card.suit}"
+   end
+ end
 end
-  #print
-  #gets.chomp
-  #hit or stay?
 
-  if computer_card <= 17 then deck.draw
-  end
-  if computer_card > 17
-    puts "Computer stays."
-  end
-  #if >17, if < 17
-end
+
+
+
+
+#  if computer_card.map <= 17 then deck.draw
+#  end
+#  if computer_card.map > 17
+#    puts "Computer stays."
+#  end
+
+
 
   puts "Welcome to Kate's Jacked Game of Blackjack! Would you like to play?"
   play = gets.chomp.downcase
